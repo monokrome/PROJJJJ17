@@ -1,0 +1,19 @@
+# Unnecessary project files
+*.*proj*
+*.sln
+
+# Various build artifacts
+*/x64/*
+*/x86/*
+*/Debug/*
+x64/*
+x86/*
+Debug/*
+
+# Library files
+/lib/*
+/include/*
+
+# Non-git hidden files
+.*
+!.git*
