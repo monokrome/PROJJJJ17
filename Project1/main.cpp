@@ -15,13 +15,29 @@
 
 const auto BEGIN = "Hello,,,,,,,,,,,, Welcome ttttttttttttLD:MEM";
 
+typedef struct commandLineOptions {
+	int resolution[2] = { 640, 480 };
+	bool fullscreen = false;
+} commandLineOptions;
+
+int executeMainLoop(commandLineOptions *options) {
+	auto *root = new RootTransformation(options->resolution, options->fullscreen);
+	free(options);
+	root->Begin(false);
+	delete root;
+	return 0;
+}
+
+commandLineOptions* getCommandLineOptions(int argc, char *argv[]) {
+	auto options = (commandLineOptions*) calloc(1, sizeof(commandLineOptions));
+	if (options == 0) return options;
+	return options;
+}
+
 int main(int argc, char *argv[]) {
 	printf("%s\n", BEGIN);
-
-	auto *root = new RootTransformation();
-	root -> Begin(false);
-	delete root;
-	
+	auto options = getCommandLineOptions(argc, argv);
+	int errorCode = executeMainLoop(options);
 	printf("\n");
-	return 0;
+	return errorCode;
 }
