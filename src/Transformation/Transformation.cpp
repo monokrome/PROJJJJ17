@@ -1,7 +1,5 @@
-#pragma once
-
-#include "GameState.h"
-#include "Transformation.h"
+#include "Project09/GameState.h"
+#include "Project09/Transformation.h"
 
 Transformation::Transformation(Transformation* parentTransformation) {
 	parent = parentTransformation;
